@@ -1,0 +1,15 @@
+{
+  "name": "com.parkminpackages.workflow.default",
+  "displayName": "ParkMinPackages Workflow Default",
+  "version": "1.0.0",
+  "license": "MIT",
+  "documentationUrl": "https://github.com/ParkMinPackages/Workflow-Default#readme",
+  "changelogUrl": "https://github.com/ParkMinPackages/Workflow-Default/blob/main/CHANGELOG.md",
+  "licensesUrl": "https://github.com/ParkMinPackages/Workflow-Default/blob/main/LICENSE.md",
+  "unity": "6000.5",
+  "description": "The default Unity project workflow, structure, and reusable setup conventions maintained by ParkMinPackages.",
+  "author": {
+    "name": "ParkMinPackages",
+    "url": "https://github.com/ParkMinPackages"
+  }
+}

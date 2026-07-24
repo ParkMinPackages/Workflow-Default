@@ -1,0 +1,14 @@
+{
+  "name": "ParkMinPackages.Workflow.Default",
+  "rootNamespace": "com.parkminpackages.workflow.default",
+  "references": [],
+  "includePlatforms": [],
+  "excludePlatforms": [],
+  "allowUnsafeCode": false,
+  "overrideReferences": false,
+  "precompiledReferences": [],
+  "autoReferenced": true,
+  "defineConstraints": [],
+  "versionDefines": [],
+  "noEngineReferences": false
+}

@@ -4,6 +4,12 @@ All notable changes to this package will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.1.0] - 2026-07-25
+
+### Changed
+- Repackaged the reusable UI and workspace presets as importable `UIs.unitypackage` and `WorkSpace.unitypackage` assets.
+- Removed the unpacked preset source assets now distributed through the Unity packages.
+
 ## [5.0.0] - 2026-07-25
 
 ### Breaking Changes

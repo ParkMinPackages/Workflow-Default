@@ -1,7 +1,7 @@
 {
   "name": "com.parkminpackages.workflow.default",
   "displayName": "ParkMinPackages.Workflow.Default",
-  "version": "5.1.0",
+  "version": "6.0.0",
   "license": "MIT",
   "documentationUrl": "https://github.com/ParkMinPackages/Workflow-Default#readme",
   "changelogUrl": "https://github.com/ParkMinPackages/Workflow-Default/blob/main/CHANGELOG.md",
@@ -9,7 +9,7 @@
   "unity": "6000.5",
   "description": "The default Unity project workflow, structure, and reusable setup conventions maintained by ParkMinPackages.",
   "dependencies": {
-    "com.parkminpackages.foundation": "5.0.0",
+    "com.parkminpackages.foundation": "5.1.0",
     "com.parkminpackages.ugui": "5.0.0",
     "com.unity.inputsystem": "1.19.0",
     "com.cysharp.unitask": "2.5.10",

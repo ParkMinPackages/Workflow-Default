@@ -4,6 +4,14 @@ All notable changes to this package will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [6.0.0] - 2026-07-28
+
+### Breaking Changes
+- Moved `EditorPlayBehaviour`, `InstantiateOnceOnRuntime`, and `TargetFrameSetting` to Foundation and changed their namespaces to `ParkMinPackages.Foundation.Components`.
+
+### Changed
+- Updated the Foundation dependency to `5.1.0`.
+
 ## [5.1.0] - 2026-07-25
 
 ### Changed

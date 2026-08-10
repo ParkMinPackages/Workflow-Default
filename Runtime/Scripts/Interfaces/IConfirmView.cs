@@ -16,7 +16,7 @@ namespace ParkMinPackages.Workflow.Default.Interfaces
 
 	public static class ButtonConfirmViewExtensions
 	{
-		public static UniTask ConfirmByButtonAsync(
+		public static UniTask ConfirmAsyncByButton(
 			this IButtonConfirmView view,
 			CancellationToken cancellationToken
 		) {

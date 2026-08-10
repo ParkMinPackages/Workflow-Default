@@ -18,8 +18,18 @@ namespace ParkMinPackages.Workflow.Default.Interfaces
 		public static void RebuildLayoutByRectTransformTwice(
 			this IRectTransformLayoutRebuildable layoutRebuildable
 		) {
-			LayoutRebuilder.ForceRebuildLayoutImmediate(layoutRebuildable.LayoutRebuildTarget);
-			LayoutRebuilder.ForceRebuildLayoutImmediate(layoutRebuildable.LayoutRebuildTarget);
+			ContentSizeFitter[] contentSizeFitters =
+				layoutRebuildable.LayoutRebuildTarget.GetComponentsInChildren<ContentSizeFitter>();
+
+			foreach (ContentSizeFitter contentSizeFitter in contentSizeFitters) {
+				LayoutRebuilder.ForceRebuildLayoutImmediate(
+					(RectTransform)contentSizeFitter.transform
+				);
+			}
+
+			LayoutRebuilder.ForceRebuildLayoutImmediate(
+				layoutRebuildable.LayoutRebuildTarget
+			);
 		}
 	}
 }

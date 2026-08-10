@@ -4,6 +4,20 @@ All notable changes to this package will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [7.0.0] - 2026-08-10
+
+### Breaking Changes
+- Removed the default `MessageUI` and `YesOrNoUI` components so applications can provide UI implementations suited to their own presentation requirements.
+
+### Added
+- Added composable interfaces and shared implementations for messages, icons, confirmation, yes-or-no answers, and layout rebuilding.
+- Added `WithMessage` and `WithIcon` fluent extensions that preserve the concrete receiver type regardless of chaining order.
+- Added reusable message and yes-or-no UI flow extensions.
+- Added the standalone `YesOrNo` result enum.
+
+### Changed
+- Added the direct TextMesh Pro assembly reference required by TMP-based message views.
+
 ## [6.1.0] - 2026-07-29
 
 ### Added

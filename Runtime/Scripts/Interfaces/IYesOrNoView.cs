@@ -1,3 +1,4 @@
+using System;
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using ParkMinPackages.Workflow.Default.Enums;
@@ -7,30 +8,21 @@ namespace ParkMinPackages.Workflow.Default.Interfaces
 {
 	public interface IYesOrNoView
 	{
-		UniTask<YesOrNo> WaitForAnswerAsync(
-			CancellationToken cancellationToken
-		);
-	}
+		public UniTask<YesOrNo> YesOrNoAsync(CancellationToken cancellationToken);
 
-	public interface IButtonYesOrNoView : IYesOrNoView
-	{
-		Button YesButton { get; }
-		Button NoButton { get; }
-	}
-
-	public static class ButtonYesOrNoViewExtensions
-	{
-		public static async UniTask<YesOrNo> WaitForAnswerByButtonAsync(
-			this IButtonYesOrNoView view,
+		public static async UniTask<YesOrNo> YesOrNoAsyncByButtons(
+			Button yesButton,
+			Button noButton,
 			CancellationToken cancellationToken
 		) {
-			using CancellationTokenSource buttonCts =
-				CancellationTokenSource.CreateLinkedTokenSource(cancellationToken);
+			if (cancellationToken == CancellationToken.None) {
+				throw new ArgumentException("CancellationToken.None is not allowed", nameof(cancellationToken));
+			}
+
 			int buttonIndex = await UniTask.WhenAny(
-				view.YesButton.OnClickAsync(buttonCts.Token),
-				view.NoButton.OnClickAsync(buttonCts.Token)
+				yesButton.OnClickAsync(cancellationToken),
+				noButton.OnClickAsync(cancellationToken)
 			);
-			buttonCts.Cancel();
 			return buttonIndex == 0 ? YesOrNo.Yes : YesOrNo.No;
 		}
 	}

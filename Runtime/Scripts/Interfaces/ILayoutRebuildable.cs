@@ -6,21 +6,12 @@ namespace ParkMinPackages.Workflow.Default.Interfaces
 {
 	public interface ILayoutRebuildable
 	{
-		void RebuildLayout();
-	}
+		public void RebuildLayout();
 
-	public interface IRectTransformLayoutRebuildable : ILayoutRebuildable
-	{
-		RectTransform LayoutRebuildTarget { get; }
-	}
+		public RectTransform RebuildLayoutTarget { get; }
 
-	public static class RectTransformLayoutRebuildableExtensions
-	{
-		public static void RebuildLayoutBottomUp(
-			this IRectTransformLayoutRebuildable layoutRebuildable
-		) {
-			ContentSizeFitter[] contentSizeFitters =
-				layoutRebuildable.LayoutRebuildTarget.GetComponentsInChildren<ContentSizeFitter>();
+		public static void RebuildLayoutBottomUp(ILayoutRebuildable layoutRebuildable) {
+			ContentSizeFitter[] contentSizeFitters = layoutRebuildable.RebuildLayoutTarget.GetComponentsInChildren<ContentSizeFitter>();
 			Array.Sort(contentSizeFitters, CompareByHierarchyDepthDescending);
 
 			foreach (ContentSizeFitter contentSizeFitter in contentSizeFitters) {
@@ -29,19 +20,17 @@ namespace ParkMinPackages.Workflow.Default.Interfaces
 				);
 			}
 
-			LayoutRebuilder.ForceRebuildLayoutImmediate(
-				layoutRebuildable.LayoutRebuildTarget
-			);
+			LayoutRebuilder.ForceRebuildLayoutImmediate(layoutRebuildable.RebuildLayoutTarget);
 		}
 
-		static int CompareByHierarchyDepthDescending(
+		protected static int CompareByHierarchyDepthDescending(
 			ContentSizeFitter left,
 			ContentSizeFitter right
 		) {
 			return GetHierarchyDepth(right.transform).CompareTo(GetHierarchyDepth(left.transform));
 		}
 
-		static int GetHierarchyDepth(Transform transform) {
+		protected static int GetHierarchyDepth(Transform transform) {
 			int depth = 0;
 
 			while (transform != null) {
@@ -50,6 +39,14 @@ namespace ParkMinPackages.Workflow.Default.Interfaces
 			}
 
 			return depth;
+		}
+	}
+
+	public static class ILayoutRebuildableExtensions
+	{
+		public static T WithRebuildLayout<T>(this T layoutRebuildable) where T : ILayoutRebuildable {
+			layoutRebuildable.RebuildLayout();
+			return layoutRebuildable;
 		}
 	}
 }

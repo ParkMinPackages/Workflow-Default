@@ -4,6 +4,18 @@ All notable changes to this package will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [8.0.0] - 2026-08-12
+
+### Breaking Changes
+- Reworked message, icon, confirmation, yes-or-no, and layout contracts around interface implementation templates with explicit forwarding methods.
+- Generalized icon views by icon asset type so Image views use Sprite and RawImage views use Texture without runtime Sprite creation.
+- Renamed confirmation and yes-or-no operations and consolidated their presentation flows into UIFlowExtensions.
+
+### Changed
+- Moved the duration-based display flow from BasicUI to UIFlowExtensions.
+- Added message and icon value accessors and fluent configuration extensions.
+- Updated the UGUI dependency to 6.0.0.
+
 ## [7.0.4] - 2026-08-10
 
 ### Changed

@@ -1,3 +1,4 @@
+using System;
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using UnityEngine.UI;
@@ -6,21 +7,17 @@ namespace ParkMinPackages.Workflow.Default.Interfaces
 {
 	public interface IConfirmView
 	{
-		UniTask ConfirmAsync(CancellationToken cancellationToken);
-	}
+		public UniTask ConfirmAsync(CancellationToken cancellationToken);
 
-	public interface IButtonConfirmView : IConfirmView
-	{
-		Button ConfirmButton { get; }
-	}
-
-	public static class ButtonConfirmViewExtensions
-	{
 		public static UniTask ConfirmAsyncByButton(
-			this IButtonConfirmView view,
+			Button confirmButton,
 			CancellationToken cancellationToken
 		) {
-			return view.ConfirmButton.OnClickAsync(cancellationToken);
+			if (cancellationToken == CancellationToken.None) {
+				throw new ArgumentException("CancellationToken.None is not allowed", nameof(cancellationToken));
+			}
+
+			return confirmButton.OnClickAsync(cancellationToken);
 		}
 	}
 }

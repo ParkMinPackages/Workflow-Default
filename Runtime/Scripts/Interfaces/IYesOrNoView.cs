@@ -9,10 +9,15 @@ namespace ParkMinPackages.Workflow.Default.Interfaces
 	public interface IYesOrNoView
 	{
 		public UniTask<YesOrNo> YesOrNoAsync(CancellationToken cancellationToken);
+	}
 
-		public static async UniTask<YesOrNo> YesOrNoAsyncByButtons(
-			Button yesButton,
-			Button noButton,
+	public interface IButtonYesOrNoView : IYesOrNoView
+	{
+		public Button YesButton { get; }
+		public Button NoButton { get; }
+
+		public static async UniTask<YesOrNo> YesOrNoAsync(
+			IButtonYesOrNoView view,
 			CancellationToken cancellationToken
 		) {
 			if (cancellationToken == CancellationToken.None) {
@@ -20,8 +25,8 @@ namespace ParkMinPackages.Workflow.Default.Interfaces
 			}
 
 			int buttonIndex = await UniTask.WhenAny(
-				yesButton.OnClickAsync(cancellationToken),
-				noButton.OnClickAsync(cancellationToken)
+				view.YesButton.OnClickAsync(cancellationToken),
+				view.NoButton.OnClickAsync(cancellationToken)
 			);
 			return buttonIndex == 0 ? YesOrNo.Yes : YesOrNo.No;
 		}

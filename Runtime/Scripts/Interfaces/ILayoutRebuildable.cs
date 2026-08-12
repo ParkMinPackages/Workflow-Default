@@ -7,10 +7,13 @@ namespace ParkMinPackages.Workflow.Default.Interfaces
 	public interface ILayoutRebuildable
 	{
 		public void RebuildLayout();
+	}
 
+	public interface IRectTransformLayoutRebuildable : ILayoutRebuildable
+	{
 		public RectTransform RebuildLayoutTarget { get; }
 
-		public static void RebuildLayoutBottomUp(ILayoutRebuildable layoutRebuildable) {
+		public static void RebuildLayout(IRectTransformLayoutRebuildable layoutRebuildable) {
 			ContentSizeFitter[] contentSizeFitters = layoutRebuildable.RebuildLayoutTarget.GetComponentsInChildren<ContentSizeFitter>();
 			Array.Sort(contentSizeFitters, CompareByHierarchyDepthDescending);
 

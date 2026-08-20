@@ -3,7 +3,7 @@
   "gitDependencies": [
     {
       "packageName": "com.parkminpackages.foundation",
-      "version": "5.6.1",
+      "version": "6.0.0",
       "url": "https://github.com/ParkMinPackages/Foundation.git"
     },
     {
